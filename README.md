@@ -8,4 +8,6 @@
 
 5.SubtitleLearnv\video_subtitle_app路径下的mpv.zip要解压出来，到后期你们需要打包代码才可以将mpv打包到exe中去的，因为我通过git上传代码，单个文件不能超过100MB，所以我压缩了MPV
 
+6.参考视频：https://www.bilibili.com/video/BV1Ba41187cP
+
 <img width="1913" height="1039" alt="image" src="https://github.com/user-attachments/assets/c628e15f-83c6-4b94-8298-96897b41d54f" />
