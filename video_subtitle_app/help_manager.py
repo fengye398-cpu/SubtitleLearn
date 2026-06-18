@@ -275,9 +275,9 @@ SubtitleLearn 是一款专为外语学习者设计的视频字幕处理工具。
   不匹配: Say Hello / Hi Hello
 
 示例2: 以某词结尾
-  输入: world$
-  匹配: Hello world / beautiful world
-  不匹配: world is / world!
+  输入: too\W*$
+  匹配: Hello world / beautiful world/ world!
+  不匹配: world is 
 
 示例3: 开头和结尾组合
   输入: ^Hello.*world$
