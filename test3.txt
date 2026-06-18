@@ -1,0 +1,173 @@
+PS D:\桌面\video_subtitle_cut> & D:/桌面/video_subtitle_cut/.venv/Scripts/Activate.ps1
+(.venv) PS D:\桌面\video_subtitle_cut> cd D:\桌面\video_subtitle_cut
+>> .venv\Scripts\activate
+>> python video_subtitle_app\main.py
+[OK] 主窗口: tkinterdnd2 导入成功
+[ROCKET] 方案7亚毫秒级精准技术已加载到单项目导出器
+[ROCKET] 方案7亚毫秒级精准技术组件已初始化（单项目导出器）
+[MPV管理器] 检测到开发环境，基础路径: D:\桌面\video_subtitle_cut\video_subtitle_app
+[INFO] 开始导入原版队列管理器...
+[INFO] 导入 ExportQueue...
+[INFO] 导入 QueueProcessor...
+[INFO] 导入 QueueManagerDialog...
+[图标管理器] 检测到开发环境，资源路径: D:\桌面\video_subtitle_cut\video_subtitle_app
+[图标管理器] 找到图标目录: D:\桌面\video_subtitle_cut\video_subtitle_app\icons      
+tkinterdnd2 导入成功
+ 方案B智能校验系统已加载
+[OK] 使用原版队列管理器
+==================================================
+SubtitleLearn - 外语学习字幕片段工具
+版本：1.0.0
+==================================================
+检查依赖项...
+依赖项检查通过
+初始化应用...
+应用初始化完成
+配置目录：C:\Users\JINGDAN\.video_subtitle_app
+缓存目录：C:\Users\JINGDAN\.video_subtitle_app\cache
+数据库文件：C:\Users\JINGDAN\.video_subtitle_app\app.db
+启动主界面...
+[OK] 主窗口: 使用 TkinterDnD.Tk，类型: Tk
+[OK] 主窗口: 拖拽方法可用: True
+检查MPV播放器可用性...
+[MPV管理器] 开始查找MPV播放器...
+[MPV管理器] 找到相对路径MPV: D:\桌面\video_subtitle_cut\video_subtitle_app\mpv\mpv.exe
+使用 MPV 播放器
+MPV播放器初始化完成（进程模式）
+[OK] 原版队列管理器初始化成功（使用完整导出流程）
+[图标管理器] 图标文件存在: D:\桌面\video_subtitle_cut\video_subtitle_app\icons\app_icon.ico
+[图标管理器] 图标文件存在: D:\桌面\video_subtitle_cut\video_subtitle_app\icons\app_icon.ico
+[图标管理器] 窗口图标设置成功: D:\桌面\video_subtitle_cut\video_subtitle_app\icons\app_icon.ico
+[OK] 主窗口图标设置成功
+[项目全选] 已清除项目全选模式
+[配置管理器] 已加载默认配置
+[图标管理器] 图标文件存在: D:\桌面\video_subtitle_cut\video_subtitle_app\icons\app_icon.ico
+[图标管理器] 窗口图标设置成功: D:\桌面\video_subtitle_cut\video_subtitle_app\icons\app_icon.ico
+[队列管理器] 创建新窗口
+[PowerManager] 已阻止系统休眠
+[QueueProcessor] 使用完整导出流程...
+[队列导出] 开始完整导出任务...
+[队列导出] 任务ID: 08c0e40a-3fbc-42d0-a079-372449db1eda
+[队列导出] 片段数: 1
+[队列导出] 输出目录: D:/桌面/000000
+[DEBUG-队列] 任务包含 1 个片段，视频路径: D:\BaiduNetdiskDownload\Boku dake ga Inai Machi [720p]\OVER\新建文件夹\Boku dake ga Inai Machi [01].mp4
+[DEBUG-队列] 片段 1: segment_id=9963, project_id=22
+[DEBUG-队列] 检测到的唯一 project_id 数量: 1, IDs: {22}
+[DEBUG-队列] 转换后的唯一 project_id 数量: 1, IDs: {22}
+[队列导出] 已转换 1 个片段对象
+[DEBUG-设置] 已设置回调到 dialog 实例: id=2011929315888
+[DEBUG-设置] dialog.segments 数量: 1
+[DEBUG-设置] task.total_segments: 1
+[DEBUG-设置] task.task_id: 08c0e40a...
+[SEARCH] [DEBUG] ScriptAdapter: 开始创建过滤字幕文件
+[SEARCH] [DEBUG] ScriptAdapter: 输入片段数量: 1
+[SEARCH] [DEBUG] ScriptAdapter: 原始字幕文件: D:\BaiduNetdiskDownload\Boku dake ga Inai Machi [720p]\OVER\新建文件夹\Boku dake ga Inai Machi [01].srt
+[SEARCH] [DEBUG] ScriptAdapter: 原始字幕文件包含 324 个条目
+[SEARCH] [DEBUG] ScriptAdapter: 处理片段 1: 60.6-63.5s
+[OK] [INFO] ScriptAdapter: 片段 1 成功匹配到字幕条目
+[SEARCH] [DEBUG] ScriptAdapter: 过滤后字幕文件包含 1 个条目
+[SEARCH] [DEBUG] ScriptAdapter: 临时字幕文件保存到: C:\Users\JINGDAN\AppData\Local\Temp\video_export_pruyzol_\selected_segments.srt
+[队列导出] 视频文件: D:\BaiduNetdiskDownload\Boku dake ga Inai Machi [720p]\OVER\新建文件夹\Boku dake ga Inai Machi [01].mp4
+[队列导出] 字幕文件: C:\Users\JINGDAN\AppData\Local\Temp\video_export_pruyzol_\selected_segments.srt
+[队列导出] 输出路径: D:/桌面/000000
+[队列导出] 使用单项目导出模式
+[队列导出] 开始处理视频片段...
+[队列导出] 处理参数: video_file=D:\BaiduNetdiskDownload\Boku dake ga Inai Machi [720p]\OVER\新建文件夹\Boku dake ga Inai Machi [01].mp4
+[队列导出] 处理参数: srt_file=C:\Users\JINGDAN\AppData\Local\Temp\video_export_pruyzol_\selected_segments.srt
+[队列导出] 处理参数: output_dir=D:/桌面/000000
+[队列导出] [DEBUG-导出参数] 导出模式: reencode
+[队列导出] [DEBUG-导出参数] 命名模式: index
+[队列导出] [DEBUG-导出参数] 编码预设: veryfast
+[队列导出] [DEBUG-导出参数] CRF质量: 24
+[队列导出] [DEBUG-导出参数] 编码分辨率: 656x368
+[队列导出] [DEBUG-导出参数] 编码帧率: 25
+[队列导出] [DEBUG-导出来源] 队列导出
+[队列导出] 找到 1 个字幕片段
+[队列导出] ✓ 片段切割模式（默认）
+[队列导出] 字幕文件详细内容:
+[队列导出]   字幕 1: 60.6-63.5s, '只是轉瞬即逝的託辭罷了
+浮かんでは消えていく言い訳の言葉だ...'
+[队列导出] 字幕文件大小: 124 字节
+[队列导出] 视频时长: 1372.10秒
+[队列导出] [DEBUG-命名逻辑] 视频名称: Boku dake ga Inai Machi [01]
+[队列导出] [DEBUG-命名逻辑] 时间戳: 20251214_152205
+[队列导出] [DEBUG-命名逻辑] 基础目录名: Boku dake ga Inai Machi [01]_20251214_152205
+[队列导出] [DEBUG-目录结构] 用户指定输出目录: D:/桌面/000000
+[队列导出] [DEBUG-目录结构] 外层目录(base_dir): D:/桌面/000000\Boku dake ga Inai Machi [01]_20251214_152205
+[队列导出] [DEBUG-目录结构] 片段目录(chunk_dir): D:/桌面/000000\Boku dake ga Inai Machi [01]_20251214_152205\Boku dake ga Inai Machi [01]
+[队列导出] 输出目录结构:
+[队列导出]   片段目录: D:/桌面/000000\Boku dake ga Inai Machi [01]_20251214_152205\Boku dake ga Inai Machi [01]
+[队列导出]   合并目录: D:/桌面/000000\Boku dake ga Inai Machi [01]_20251214_152205
+[队列导出] 使用重新编码，跳过MoviePy加载
+[队列导出] ⚡ 使用并行处理模式（多线程重新编码）
+[队列导出]   [系统资源] 总内存: 15.8GB, 可用: 5.6GB
+[队列导出]   [自动调整] 视频编码worker: 6个 (基于5.6GB可用内存)
+[队列导出] 使用 6 个并行worker处理 1 个片段
+[队列导出]   [1/1] 切割完成
+[DEBUG-调用] 准备调用 on_segment_exported(0)
+[DEBUG-调用] dialog实例: id=2011929315888
+[DEBUG-调用] 回调函数: <function MainWindow._export_task_for_queue.<locals>.on_segment_exported at 0x000001D47052EB00>
+[DEBUG-回调] on_segment_exported 被调用: segment_index=0
+[DEBUG-回调] task.task_id=08c0e40a...
+[DEBUG-回调] task.total_segments=1
+[DEBUG-回调] len(task.segments)=1
+[队列导出] 片段 1/1 已完成，当前进度: 100.0%
+[DEBUG-调用] ✓ 回调调用成功
+[队列导出] 进度: 90.0% - 处理片段 1/1
+[队列导出] 片段切割完成：1 个片段
+[队列导出] 进度: 90.0% - 片段切割完成！开始合并...
+[队列导出] 所有片段切割完成，输出到: D:/桌面/000000\Boku dake ga Inai Machi [01]_20251214_152205\Boku dake ga Inai Machi [01]
+[队列导出] 开始合并片段...
+[队列导出] 使用简单合并策略（重新编码，参数已统一）
+[队列导出] ============================================================
+[队列导出] 开始简单合并策略（音频、音频字幕同名）
+[队列导出] ============================================================
+[队列导出] 找到 1 个视频片段
+[队列导出] 找到 1 个音频片段
+[队列导出] 找到 1 个字幕片段
+[队列导出] 
+步骤1: 按 project_id 分组片段...
+[队列导出] 检测到 1 个项目: [22]
+[队列导出] 
+项目 22: 1 个片段
+[队列导出]   片段 1 (文件#1): 60.6-63.5s, '只是轉瞬即逝的託辭罷了
+浮かんでは消えていく言い訳の言葉だ...'
+[队列导出] 
+按项目分组后的文件列表:
+[队列导出]   视频文件: 1 个
+[队列导出]   音频文件: 1 个
+[队列导出]   字幕文件: 1 个
+[队列导出]
+步骤2: 按项目顺序合并视频文件...
+[队列导出] 进度: 91.0% - 正在合并视频...
+[队列导出]   ✓ 视频合并成功: Boku dake ga Inai Machi [01].mp4
+[队列导出] 进度: 93.0% - 视频合并完成
+[队列导出]
+步骤3: 按项目顺序合并音频文件...
+[队列导出] 进度: 94.0% - 正在合并音频...
+[队列导出]   ✓ 音频合并成功: Boku dake ga Inai Machi [01]_audio.mp3
+[队列导出] 进度: 96.0% - 音频合并完成
+[队列导出]
+步骤4A: 基于视频时长合并字幕...
+[队列导出] 进度: 97.0% - 正在合并视频字幕...
+[队列导出]   使用 ffprobe 测量每个片段的真实时长...
+[队列导出]   片段 1: 时长 2.840s, 累计时间 2.840s
+[队列导出]   ✓ 字幕合并成功: Boku dake ga Inai Machi [01].srt (1 条字幕)
+[队列导出]   ✓ 最终时间轴长度: 2.840s
+[队列导出] 
+步骤4B: 基于音频时长合并字幕...
+[队列导出] 进度: 98.0% - 正在合并音频字幕...
+[队列导出]   使用 ffprobe 测量每个音频片段的真实时长...
+[队列导出]   片段 1: 音频时长 2.880s, 累计时间 2.880s
+[队列导出]   ✓ 音频字幕合并成功: Boku dake ga Inai Machi [01]_audio.srt (1 条字幕)
+[队列导出]   ✓ 最终时间轴长度: 2.880s
+[队列导出] 简单合并策略完成！
+[队列导出] 保留 3 个切割片段文件在: Boku dake ga Inai Machi [01]
+[队列导出] 处理完成！输出目录: D:/桌面/000000\Boku dake ga Inai Machi [01]_20251214_152205
+[队列导出] 进度: 100.0% - 处理完成！
+[队列导出] [队列模式] 单项目导出完成，输出路径: D:/桌面/000000\Boku dake ga Inai Machi [01]_20251214_152205
+[PowerManager] 已恢复系统休眠设置
+[队列导出] 已保存输出路径: D:/桌面/000000\Boku dake ga Inai Machi [01]_20251214_152205
+[队列导出] ✓ 任务导出完成
+[QueueProcessor] 所有任务已完成，触发完成回调
+[QueueProcessor] 所有任务已完成，自动停止处理器

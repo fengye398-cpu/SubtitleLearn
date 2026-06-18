@@ -1,0 +1,19 @@
+1.更新pip最新版本：python -m pip install --upgrade pip -i https://pypi.tuna.tsinghua.edu.cn/simple
+
+2.安装项目所需依赖：pip install -i https://pypi.tuna.tsinghua.edu.cn/simple pysrt==1.1.2 pyinstaller==6.16.0 psutil==7.1.3 moviepy==1.0.3 chardet==5.2.0 tkinterdnd2==0.3.0 pillow==11.3.0
+
+3.项目文件根目录下输入CMD创建虚拟环境：python -m venv .venv
+
+4.在项目文件根目录下输入CMD激活虚拟环境中：.venv\Scripts\activate
+
+5.项目开发python版本：python 3.10.10
+
+6.打包命令：
+pyinstaller --clean --noconfirm SubtitleLearn.spec
+
+
+7.待开发/修复：
+1.导出模式增加“跟读练习模式”、
+2.支持GPU加速
+3.取消或将标注模式也改成直接使用ffmpeg多线程模式，现在还在使用moviepy——>ffmpeg中转，比直接使用ffmpeg多线程导出慢了一倍
+

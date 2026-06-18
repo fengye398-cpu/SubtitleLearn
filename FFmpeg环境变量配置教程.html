@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FFmpeg 环境变量配置教程</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Microsoft YaHei', Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .presentation {
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+
+        .slide {
+            width: 100%;
+            height: 100%;
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 60px;
+            background: white;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .slide.active {
+            display: flex;
+            animation: slideIn 0.5s ease-in-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        /* 封面样式 */
+        .slide.cover {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .slide.cover h1 {
+            font-size: 4em;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .slide.cover p {
+            font-size: 1.5em;
+            opacity: 0.9;
+        }
+
+        /* 内容页样式 */
+        .slide h2 {
+            font-size: 2.5em;
+            color: #667eea;
+            margin-bottom: 40px;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 10px;
+        }
+
+        .content {
+            width: 100%;
+            max-width: 1000px;
+        }
+
+        .step-box {
+            background: #f8f9fa;
+            border-left: 5px solid #667eea;
+            padding: 25px;
+            margin: 20px 0;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .step-box h3 {
+            color: #764ba2;
+            font-size: 1.8em;
+            margin-bottom: 15px;
+        }
+
+        .step-box p, .step-box li {
+            font-size: 1.2em;
+            line-height: 1.8;
+            color: #333;
+        }
+
+        .step-box ul {
+            margin-left: 30px;
+            margin-top: 10px;
+        }
+
+        .step-box li {
+            margin: 8px 0;
+        }
+
+        .code-box {
+            background: #2d2d2d;
+            color: #f8f8f2;
+            padding: 20px;
+            border-radius: 5px;
+            font-family: 'Consolas', 'Monaco', monospace;
+            font-size: 1.1em;
+            margin: 15px 0;
+            overflow-x: auto;
+        }
+
+        .highlight {
+            background: #fff3cd;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-weight: bold;
+            color: #856404;
+        }
+
+        .success {
+            color: #28a745;
+            font-weight: bold;
+        }
+
+        .warning {
+            color: #dc3545;
+            font-weight: bold;
+        }
+
+        /* 图标样式 */
+        .icon {
+            font-size: 3em;
+            margin-bottom: 20px;
+        }
+
+        /* 导航按钮 */
+        .nav-buttons {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            display: flex;
+            gap: 15px;
+            z-index: 1000;
+        }
+
+        .nav-btn {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.1em;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+        }
+
+        .nav-btn:hover {
+            background: #764ba2;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 10px rgba(0,0,0,0.3);
+        }
+
+        .nav-btn:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        /* 页码指示器 */
+        .page-indicator {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #667eea;
+            font-size: 1.2em;
+            background: white;
+            padding: 10px 20px;
+            border-radius: 25px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        /* 列表样式 */
+        .numbered-list {
+            counter-reset: item;
+            list-style: none;
+        }
+
+        .numbered-list li {
+            counter-increment: item;
+            margin: 15px 0;
+            position: relative;
+            padding-left: 40px;
+        }
+
+        .numbered-list li::before {
+            content: counter(item);
+            background: #667eea;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+            left: 0;
+            top: 0;
+            font-weight: bold;
+        }
+
+        .img-placeholder {
+            background: #e9ecef;
+            border: 2px dashed #667eea;
+            padding: 40px;
+            text-align: center;
+            color: #667eea;
+            font-size: 1.1em;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="presentation">
+        <!-- 第1页：封面 -->
+        <div class="slide cover active">
+            <div class="icon">🎬</div>
+            <h1>FFmpeg 环境变量配置教程</h1>
+            <p>Windows系统 - 完整安装与验证指南</p>
+        </div>
+
+        <!-- 第2页：目录 -->
+        <div class="slide">
+            <h2>📋 教程目录</h2>
+            <div class="content">
+                <ol class="numbered-list">
+                    <li><strong>FFmpeg 简介</strong> - 什么是FFmpeg及其作用</li>
+                    <li><strong>下载安装</strong> - 获取FFmpeg程序文件</li>
+                    <li><strong>添加环境变量</strong> - 配置系统PATH路径</li>
+                    <li><strong>验证安装</strong> - 确认配置是否成功</li>
+                    <li><strong>常见问题</strong> - 疑难解答</li>
+                </ol>
+            </div>
+        </div>
+
+        <!-- 第3页：FFmpeg简介 -->
+        <div class="slide">
+            <h2>🎥 FFmpeg 简介</h2>
+            <div class="content">
+                <div class="step-box">
+                    <h3>什么是 FFmpeg？</h3>
+                    <p>FFmpeg 是一个开源的音视频处理工具，可以进行：</p>
+                    <ul>
+                        <li>✅ 视频格式转换（MP4、AVI、MKV等）</li>
+                        <li>✅ 音频提取和转换</li>
+                        <li>✅ 视频剪辑和合并</li>
+                        <li>✅ 视频压缩和优化</li>
+                        <li>✅ 字幕处理</li>
+                    </ul>
+                </div>
+                <div class="step-box">
+                    <h3>为什么要配置环境变量？</h3>
+                    <p>配置环境变量后，可以在<span class="highlight">任意目录</span>下直接使用 <code>ffmpeg</code> 命令，无需输入完整路径。</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 第4页：下载安装 -->
+        <div class="slide">
+            <h2>📥 下载 FFmpeg</h2>
+            <div class="content">
+                <div class="step-box">
+                    <h3>步骤 1：访问官网</h3>
+                    <p>打开浏览器，访问：<span class="highlight">https://ffmpeg.org/download.html</span></p>
+                </div>
+                <div class="step-box">
+                    <h3>步骤 2：选择 Windows 版本</h3>
+                    <ul>
+                        <li>点击 Windows 图标下的链接</li>
+                        <li>推荐选择 <span class="highlight">gyan.dev</span> 或 <span class="highlight">BtbN</span> 提供的版本</li>
+                        <li>下载 <span class="highlight">ffmpeg-release-full.7z</span></li>
+                    </ul>
+                </div>
+                <div class="step-box">
+                    <h3>步骤 3：解压文件</h3>
+                    <p>将下载的文件解压到合适位置，例如：</p>
+                    <div class="code-box">C:\Program Files\ffmpeg</div>
+                    <p style="margin-top:10px;">⚠️ <span class="warning">路径不要包含中文或特殊字符</span></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 第5页：添加环境变量 - 方法1 -->
+        <div class="slide">
+            <h2>⚙️ 添加环境变量（方法一）</h2>
+            <div class="content">
+                <div class="step-box">
+                    <h3>步骤 1：打开系统属性</h3>
+                    <ul>
+                        <li>右键点击 <span class="highlight">此电脑</span>（或"我的电脑"）</li>
+                        <li>选择 <span class="highlight">属性</span></li>
+                        <li>点击左侧 <span class="highlight">高级系统设置</span></li>
+                    </ul>
+                </div>
+                <div class="step-box">
+                    <h3>步骤 2：打开环境变量</h3>
+                    <ul>
+                        <li>在"系统属性"窗口中，点击 <span class="highlight">环境变量</span> 按钮</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- 第6页：添加环境变量 - 方法1续 -->
+        <div class="slide">
+            <h2>⚙️ 添加环境变量（方法一续）</h2>
+            <div class="content">
+                <div class="step-box">
+                    <h3>步骤 3：编辑 Path 变量</h3>
+                    <ul>
+                        <li>在"系统变量"区域找到 <span class="highlight">Path</span> 变量</li>
+                        <li>选中后点击 <span class="highlight">编辑</span></li>
+                        <li>点击 <span class="highlight">新建</span></li>
+                        <li>输入 FFmpeg 的 bin 目录路径，例如：</li>
+                    </ul>
+                    <div class="code-box">C:\Program Files\ffmpeg\bin</div>
+                </div>
+                <div class="step-box">
+                    <h3>步骤 4：保存设置</h3>
+                    <ul>
+                        <li>点击 <span class="highlight">确定</span> 保存所有窗口</li>
+                        <li>⚠️ <span class="warning">必须关闭所有打开的命令行窗口</span>，新配置才会生效</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- 第7页：添加环境变量 - 方法2 -->
+        <div class="slide">
+            <h2>⚙️ 添加环境变量（方法二：命令行）</h2>
+            <div class="content">
+                <div class="step-box">
+                    <h3>快速配置方法（需管理员权限）</h3>
+                    <p>按 <span class="highlight">Win + X</span>，选择"Windows PowerShell (管理员)"，运行：</p>
+                    <div class="code-box">[System.Environment]::SetEnvironmentVariable("Path", $env:Path + ";C:\Program Files\ffmpeg\bin", "Machine")</div>
+                    <p style="margin-top:15px;">⚠️ 注意替换为你的实际安装路径</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 第8页：验证安装 - 步骤1 -->
+        <div class="slide">
+            <h2>✅ 验证是否配置成功</h2>
+            <div class="content">
+                <div class="step-box">
+                    <h3>步骤 1：打开命令提示符</h3>
+                    <ul>
+                        <li>按 <span class="highlight">Win + R</span> 打开运行窗口</li>
+                        <li>输入 <span class="highlight">cmd</span> 并回车</li>
+                    </ul>
+                </div>
+                <div class="step-box">
+                    <h3>步骤 2：检查版本</h3>
+                    <p>在命令行中输入：</p>
+                    <div class="code-box">ffmpeg -version</div>
+                    <p style="margin-top:15px;">如果配置成功，会显示 FFmpeg 的版本信息 ✅</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 第9页：验证安装 - 步骤2 -->
+        <div class="slide">
+            <h2>✅ 验证结果示例</h2>
+            <div class="content">
+                <div class="step-box">
+                    <h3>✅ 成功的输出示例</h3>
+                    <div class="code-box">ffmpeg version 6.0-full_build
+Copyright (c) 2000-2023 the FFmpeg developers
+built with gcc 12.2.0 (Rev10, Built by MSYS2 project)
+configuration: --enable-gpl --enable-version3 ...
+...</div>
+                    <p style="margin-top:15px;"><span class="success">✓ 看到类似输出说明配置成功！</span></p>
+                </div>
+                <div class="step-box">
+                    <h3>❌ 失败的输出示例</h3>
+                    <div class="code-box">'ffmpeg' 不是内部或外部命令，也不是可运行的程序或批处理文件。</div>
+                    <p style="margin-top:15px;"><span class="warning">✗ 出现此错误说明配置失败，请检查路径是否正确</span></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 第10页：验证安装 - 其他命令 -->
+        <div class="slide">
+            <h2>🔍 其他验证命令</h2>
+            <div class="content">
+                <div class="step-box">
+                    <h3>检查完整路径</h3>
+                    <div class="code-box">where ffmpeg</div>
+                    <p style="margin-top:10px;">显示 ffmpeg.exe 的完整路径，例如：</p>
+                    <div class="code-box">C:\Program Files\ffmpeg\bin\ffmpeg.exe</div>
+                </div>
+                <div class="step-box">
+                    <h3>简单测试转换功能</h3>
+                    <div class="code-box">ffmpeg -h</div>
+                    <p style="margin-top:10px;">显示帮助信息，确认命令可用</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 第11页：常见问题 -->
+        <div class="slide">
+            <h2>❓ 常见问题解答</h2>
+            <div class="content">
+                <div class="step-box">
+                    <h3>问题 1：配置后仍提示"不是内部或外部命令"</h3>
+                    <ul>
+                        <li>✓ 检查路径是否正确（必须是 <code>bin</code> 目录）</li>
+                        <li>✓ 关闭所有命令行窗口后重新打开</li>
+                        <li>✓ 重启电脑使配置生效</li>
+                    </ul>
+                </div>
+                <div class="step-box">
+                    <h3>问题 2：路径中包含空格</h3>
+                    <p>如果路径包含空格（如 <code>C:\Program Files</code>），在 Path 中可以：</p>
+                    <ul>
+                        <li>✓ 直接添加，Windows 会自动处理</li>
+                        <li>✓ 或使用双引号包裹路径（某些旧系统需要）</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- 第12页：常见问题续 -->
+        <div class="slide">
+            <h2>❓ 常见问题解答（续）</h2>
+            <div class="content">
+                <div class="step-box">
+                    <h3>问题 3：修改"用户变量"还是"系统变量"？</h3>
+                    <ul>
+                        <li><strong>用户变量</strong>：只对当前用户有效</li>
+                        <li><strong>系统变量</strong>：对所有用户有效（推荐）</li>
+                        <li>建议修改<span class="highlight">系统变量</span>中的 Path</li>
+                    </ul>
+                </div>
+                <div class="step-box">
+                    <h3>问题 4：如何卸载或更换版本？</h3>
+                    <ul>
+                        <li>删除 FFmpeg 文件夹</li>
+                        <li>从环境变量中移除对应路径</li>
+                        <li>重新下载新版本并配置即可</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- 第13页：总结 -->
+        <div class="slide">
+            <h2>📝 总结</h2>
+            <div class="content">
+                <div class="step-box">
+                    <h3>完整配置流程</h3>
+                    <ol class="numbered-list">
+                        <li>下载 FFmpeg 并解压到指定目录</li>
+                        <li>找到 <code>bin</code> 文件夹的完整路径</li>
+                        <li>将该路径添加到系统环境变量 Path 中</li>
+                        <li>关闭所有命令行窗口</li>
+                        <li>重新打开命令行，运行 <code>ffmpeg -version</code> 验证</li>
+                    </ol>
+                </div>
+                <div class="step-box">
+                    <h3>🎉 配置成功后你可以：</h3>
+                    <ul>
+                        <li>在任意位置使用 FFmpeg 命令</li>
+                        <li>运行依赖 FFmpeg 的程序和脚本</li>
+                        <li>进行音视频处理工作</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- 第14页：结束页 -->
+        <div class="slide cover">
+            <div class="icon">🎉</div>
+            <h1>恭喜完成配置！</h1>
+            <p>现在你可以开始使用 FFmpeg 了</p>
+            <p style="margin-top: 30px; font-size: 0.9em;">如有问题，可查阅 FFmpeg 官方文档</p>
+        </div>
+    </div>
+
+    <!-- 导航按钮 -->
+    <div class="nav-buttons">
+        <button class="nav-btn" id="prevBtn" onclick="changeSlide(-1)">← 上一页</button>
+        <button class="nav-btn" id="nextBtn" onclick="changeSlide(1)">下一页 →</button>
+    </div>
+
+    <!-- 页码指示器 -->
+    <div class="page-indicator" id="pageIndicator">1 / 14</div>
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const totalSlides = slides.length;
+
+        function showSlide(n) {
+            // 移除所有active类
+            slides.forEach(slide => slide.classList.remove('active'));
+
+            // 处理边界
+            if (n >= totalSlides) {
+                currentSlide = totalSlides - 1;
+            } else if (n < 0) {
+                currentSlide = 0;
+            } else {
+                currentSlide = n;
+            }
+
+            // 显示当前幻灯片
+            slides[currentSlide].classList.add('active');
+
+            // 更新按钮状态
+            document.getElementById('prevBtn').disabled = currentSlide === 0;
+            document.getElementById('nextBtn').disabled = currentSlide === totalSlides - 1;
+
+            // 更新页码
+            document.getElementById('pageIndicator').textContent = `${currentSlide + 1} / ${totalSlides}`;
+        }
+
+        function changeSlide(direction) {
+            showSlide(currentSlide + direction);
+        }
+
+        // 键盘导航
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'ArrowLeft') {
+                changeSlide(-1);
+            } else if (e.key === 'ArrowRight' || e.key === ' ') {
+                changeSlide(1);
+            }
+        });
+
+        // 初始化
+        showSlide(0);
+    </script>
+</body>
+</html>

@@ -1,0 +1,12 @@
+{
+  "output_dir": "D:/桌面/000000/2_export",
+  "naming_mode": "index",
+  "fast_copy_mode": true,
+  "continuous_cut_mode": false,
+  "encoding_preset": "veryfast",
+  "crf": "24",
+  "target_resolution": "1280x720",
+  "target_fps": "25",
+  "smart_validation": true,
+  "auto_fix_deviation": true
+}

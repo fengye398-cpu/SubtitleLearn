@@ -1,0 +1,6 @@
+cd D:\桌面\video_subtitle_cut
+.venv\Scripts\activate
+python video_subtitle_app\main.py
+
+
+

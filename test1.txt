@@ -1,0 +1,7 @@
+1.阅读以下文档：
+@"D:\桌面\video_subtitle_cut\video_subtitle_app"
+@"D:\桌面\video_subtitle_cut\1-01.Muddy Puddles.srt"
+1.1.@"D:\桌面\video_subtitle_cut\video_subtitle_app"中的主界面“单词文本搜索 - 正则搜索”中，以某词结尾输入: too$，功能失效，以某词开头输入:^too有效
+2.本次新增功能代码量、风险大吗？
+3.说说你的理解及需要补充事项，等我确认后再开始编写代码
+4.本着非必要不修改，保证系统稳定性 
